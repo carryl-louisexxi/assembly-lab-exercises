@@ -1,0 +1,34 @@
+org 100h
+.data 
+    ARR DB 25H,12H,15H,1FH,2BH
+    
+.code
+    MOV AX,@DATA
+    MOV DS,AX
+    
+    MOV CL,5
+    
+    MOV BX,OFFSET ARR  
+    
+AGAIN:   
+    MOV AL,[BX]
+    
+    MOV DL,AL
+    MOV AH,02H
+    INT 21H
+    
+    INC BX
+    DEC CL
+     
+    JNZ AGAIN
+    
+    MOV AH,4CH
+    INT 21H
+
+END  
+    
+    
+    
+
+
+
